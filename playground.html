@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower · Playground</title>
+  <link rel="stylesheet" href="./playground.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-title">Flower / Bounce Study</span>
+      </div>
+      <nav class="nav-bar" aria-label="Main Navigation">
+        <a href="./" class="nav-link">Comparison</a>
+        <a href="./playground.html" class="nav-link active" aria-current="page">Playground</a>
+        <a href="./studio.html" class="nav-link">Logo studio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="layout-grid">
+      <aside class="controls-panel" aria-label="Bounce playground">
+        <div class="panel-header">
+          <h1 class="panel-title">Bounce playground</h1>
+          <p class="instruction-text">Lift and release the flower. Tune its bounce while it moves.</p>
+        </div>
+
+        <form class="controls-form" onsubmit="event.preventDefault();">
+          <div class="control-row">
+            <label for="pattern" class="control-label">Pattern</label>
+            <div class="select-field">
+              <select id="pattern" class="control-select">
+                <option value="rubber" selected>Rubber</option>
+                <option value="soft">Soft</option>
+                <option value="heavy">Heavy</option>
+                <option value="double">Double hop</option>
+                <option value="float">Slow float</option>
+                <option value="settle">Drop and settle</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <div class="label-with-value">
+              <label for="intensity" class="control-label">Bounce intensity</label>
+              <span id="intensity-value" class="value-readout" aria-live="polite">100%</span>
+            </div>
+            <input
+              type="range"
+              id="intensity"
+              class="control-range"
+              min="0"
+              max="200"
+              value="100"
+              step="1"
+            />
+          </div>
+
+          <div class="control-row checkbox-row">
+            <label class="checkbox-label" for="deformation">
+              <input
+                type="checkbox"
+                id="deformation"
+                class="control-checkbox"
+                checked
+              />
+
+              <span class="checkbox-text">Deformation</span>
+            </label>
+            <span id="deformation-state" class="control-help">Squash and stretch</span>
+          </div>
+
+          <div class="control-row">
+            <div class="label-with-value">
+              <label for="speed" class="control-label">Speed</label>
+              <span id="speed-value" class="value-readout" aria-live="polite">1.0x</span>
+            </div>
+            <input
+              type="range"
+              id="speed"
+              class="control-range"
+              min="0.5"
+              max="1.5"
+              value="1"
+              step="0.1"
+            />
+          </div>
+
+          <div class="button-row">
+            <button type="button" id="reset" class="btn btn-primary">Drop again</button>
+            <button type="button" id="pause" class="btn btn-secondary" aria-pressed="false">Pause motion</button>
+          </div>
+          <p class="control-help">0% settles · 100% default · 200% energetic</p>
+          <p class="control-help">Settings stay on this device.</p>
+        </form>
+      </aside>
+
+      <section class="preview-panel" aria-label="Floor Live Preview">
+        <div class="preview-header">
+          <span id="preview-pattern" class="preview-title">Rubber</span>
+          <span id="motion-status" class="status-badge" role="status" aria-live="polite">Ready</span>
+        </div>
+
+        <div id="stage" data-world class="stage-viewport" role="region" aria-label="Interactive bounce stage">
+          <div class="stage-floor" aria-hidden="true">
+            <div class="floor-top-line"></div>
+            <div class="floor-surface"></div>
+          </div>
+
+          <div id="floorShadow" class="floor-shadow shadow" aria-hidden="true"></div>
+
+          <button type="button"
+            id="logoEntity"
+            class="logo-entity flower"
+            aria-label="Grab Rubber flower" aria-describedby="keyboard-help"
+          >
+            <img
+              src="./assets/flower.svg"
+              alt=""
+              id="flowerLogo"
+              class="flower-logo"
+              draggable="false"
+            />
+          </button>
+        </div>
+        <p id="keyboard-help" class="preview-help">Arrow keys to lift and move · Space to drop</p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

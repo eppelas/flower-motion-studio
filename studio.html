@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower · Logo studio</title>
+  <link rel="stylesheet" href="./playground.css">
+  <link rel="stylesheet" href="./studio.css">
+</head>
+<body class="studio-page" data-settings-key="flower-logo-studio-motion-v1">
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-title">Flower / Bounce Study</span>
+      </div>
+      <nav class="nav-bar" aria-label="Main Navigation">
+        <a href="./" class="nav-link">Comparison</a>
+        <a href="./playground.html" class="nav-link">Playground</a>
+        <a href="./studio.html" class="nav-link active" aria-current="page">Logo studio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="layout-grid">
+      <aside class="controls-panel" aria-label="Logo studio controls">
+        <div class="panel-header">
+          <h1 class="panel-title">Logo studio</h1>
+          <p class="instruction-text">Set the movement and colours. Drag the logo to try a drop.</p>
+        </div>
+
+        <form class="controls-form" onsubmit="event.preventDefault();">
+          <div class="control-row">
+            <div class="label-with-value">
+              <label for="intensity" class="control-label">Bounce intensity</label>
+              <span id="intensity-value" class="value-readout" aria-live="polite">100%</span>
+            </div>
+            <input
+              type="range"
+              id="intensity"
+              class="control-range"
+              min="0"
+              max="200"
+              value="100"
+              step="1"
+            />
+          </div>
+
+          <div class="control-row checkbox-row">
+            <label class="checkbox-label" for="deformation">
+              <input
+                type="checkbox"
+                id="deformation"
+                class="control-checkbox"
+                checked
+              />
+
+              <span class="checkbox-text">Deformation</span>
+            </label>
+            <span id="deformation-state" class="control-help">Squash and stretch</span>
+          </div>
+
+          <fieldset class="colour-controls">
+            <legend>Logo colours</legend>
+            <div class="colour-row">
+              <label for="colour-green-disc">Outer disc</label>
+              <input type="color" id="colour-green-disc" data-color-part="green-disc" aria-label="Outer disc colour">
+              <input type="text" aria-describedby="colour-error" data-hex-part="green-disc" aria-label="Outer disc hex colour" spellcheck="false" autocomplete="off" maxlength="7" placeholder="#000000">
+            </div>
+            <div class="colour-row">
+              <label for="colour-cream-flower">Petals</label>
+              <input type="color" id="colour-cream-flower" data-color-part="cream-flower" aria-label="Petals colour">
+              <input type="text" aria-describedby="colour-error" data-hex-part="cream-flower" aria-label="Petals hex colour" spellcheck="false" autocomplete="off" maxlength="7" placeholder="#000000">
+            </div>
+            <div class="colour-row">
+              <label for="colour-green-centre">Centre ring</label>
+              <input type="color" id="colour-green-centre" data-color-part="green-centre" aria-label="Centre ring colour">
+              <input type="text" aria-describedby="colour-error" data-hex-part="green-centre" aria-label="Centre ring hex colour" spellcheck="false" autocomplete="off" maxlength="7" placeholder="#000000">
+            </div>
+            <div class="colour-row">
+              <label for="colour-yellow-centre">Centre</label>
+              <input type="color" id="colour-yellow-centre" data-color-part="yellow-centre" aria-label="Centre colour">
+              <input type="text" aria-describedby="colour-error" data-hex-part="yellow-centre" aria-label="Centre hex colour" spellcheck="false" autocomplete="off" maxlength="7" placeholder="#000000">
+            </div>
+            <p id="colour-error" class="control-help" role="status" aria-live="polite"></p>
+            <button type="button" id="reset-colours" class="btn btn-secondary">Reset colours</button>
+          </fieldset>
+          <fieldset id="click-effects" class="colour-controls">
+            <legend>Click &amp; explode</legend>
+            <label class="checkbox-label" for="click-enabled"><input id="click-enabled" class="control-checkbox" type="checkbox" checked>Enable click response</label>
+            <div class="control-row"><div class="label-with-value"><label for="click-threshold">Clicks to explode</label><output id="click-threshold-value">3</output></div><input id="click-threshold" class="control-range" type="range" min="1" max="6" value="3"></div>
+            <div class="control-row"><div class="label-with-value"><label for="explosion-force">Explosion intensity</label><output id="explosion-force-value">100%</output></div><input id="explosion-force" class="control-range" type="range" min="0" max="200" step="10" value="100"></div>
+            <div class="control-row"><div class="label-with-value"><label for="piece-count">Pieces</label><output id="piece-count-value">100</output></div><input id="piece-count" class="control-range" type="range" min="10" max="300" step="10" value="100"></div>
+            <div class="control-row"><div class="label-with-value"><label for="expansion">Expansion before burst</label><output id="expansion-value">160%</output></div><input id="expansion" class="control-range" type="range" min="100" max="220" step="10" value="160"></div>
+            <p class="control-help">Burst settings apply to the next explosion.</p>
+            <p id="click-help" class="control-help">Clicks charge and hold the logo. Dragging does not count.</p>
+            <p id="click-status" class="control-help" role="status" aria-live="polite">0 / 3 clicks</p>
+            <div class="button-row"><button id="charge-logo" class="btn btn-secondary" type="button">Charge logo</button><button id="reset-logo" class="btn btn-secondary" type="button">Reset logo</button></div>
+          </fieldset>
+          <details class="motion-options">
+            <summary>Pattern and speed</summary>
+          <div class="control-row">
+            <label for="pattern" class="control-label">Pattern</label>
+            <div class="select-field">
+              <select id="pattern" class="control-select">
+                <option value="rubber" selected>Rubber</option>
+                <option value="soft">Soft</option>
+                <option value="heavy">Heavy</option>
+                <option value="double">Double hop</option>
+                <option value="float">Slow float</option>
+                <option value="settle">Drop and settle</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <div class="label-with-value">
+              <label for="speed" class="control-label">Speed</label>
+              <span id="speed-value" class="value-readout" aria-live="polite">1.0x</span>
+            </div>
+            <input
+              type="range"
+              id="speed"
+              class="control-range"
+              min="0.5"
+              max="1.5"
+              value="1"
+              step="0.1"
+            />
+          </div>
+
+          </details>
+          <div class="button-row">
+            <button type="button" id="reset" class="btn btn-primary">Drop again</button>
+            <button type="button" id="pause" class="btn btn-secondary" aria-pressed="false">Pause motion</button>
+          </div>
+          <p class="control-help">0% settles · 100% default · 200% energetic</p>
+          <p class="control-help">Motion and colours stay on this device.</p>
+        </form>
+      </aside>
+
+      <section class="preview-panel" aria-label="Floor Live Preview">
+        <div class="preview-header">
+          <span id="preview-pattern" class="preview-title">Rubber</span>
+          <span id="motion-status" class="status-badge" role="status" aria-live="polite">Ready</span>
+        </div>
+
+        <div id="stage" data-world class="stage-viewport" role="region" aria-label="Interactive bounce stage">
+          <div class="stage-floor" aria-hidden="true">
+            <div class="floor-top-line"></div>
+            <div class="floor-surface"></div>
+          </div>
+
+          <div id="floorShadow" class="floor-shadow shadow" aria-hidden="true"></div>
+
+          <button type="button"
+            id="logoEntity"
+            class="logo-entity flower"
+            aria-label="Grab Rubber flower" aria-describedby="keyboard-help click-help"
+          >
+            <img
+              src="./assets/flower.svg"
+              alt=""
+              id="flowerLogo"
+              class="flower-logo"
+              draggable="false"
+            />
+          </button>
+        </div>
+        <p id="keyboard-help" class="preview-help">Arrow keys to lift and move · Space to drop</p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+  <script type="module" src="./colours.js"></script>
+</body>
+</html>

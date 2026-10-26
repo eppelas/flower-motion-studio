@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower · Motion study</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page-container">
+    <nav class="page-nav" aria-label="Study pages"><a href="./" aria-current="page">Comparison</a><a href="./playground.html">Playground</a><a href="./studio.html">Logo studio</a></nav>
+    <header class="app-header">
+      <div class="header-titles">
+        <h1 class="study-title">Flower / Bounce study</h1>
+        <p class="study-instruction">Lift, drag, and drop. Each flower has its own weight.</p>
+      </div>
+      <div class="header-controls">
+        <button id="pause" type="button" class="btn" aria-pressed="false">Pause motion</button>
+        <button id="reset" type="button" class="btn">Reset all</button>
+      </div>
+    </header>
+
+    <main id="stage" class="frames-stack" aria-label="Floor-based bounce study playgrounds">
+      <!-- Frame 1: Rubber -->
+      <section class="motion-frame" data-motion="rubber" aria-labelledby="heading-rubber">
+        <header class="frame-bar">
+          <div class="frame-meta">
+            <span class="frame-index">01</span>
+            <h2 id="heading-rubber" class="frame-title">Rubber</h2>
+          </div>
+          <p class="frame-summary">High bounce. Quick spring.</p>
+        </header>
+        <div class="stage arena" data-world id="stage-rubber" data-index="0">
+          <div class="floor-baseline" aria-hidden="true">
+            <div class="floor-ticks"></div>
+          </div>
+          <div class="cast-shadow shadow" id="shadow-rubber" aria-hidden="true"></div>
+          <button type="button"
+            id="flower-rubber"
+            class="flower-unit flower"
+            aria-label="Grab Rubber flower" aria-describedby="keyboard-help"
+          >
+            <img class="flower-graphic" src="./assets/flower.svg" width="194" height="198" alt="" draggable="false">
+          </button>
+        </div>
+      </section>
+
+      <!-- Frame 2: Soft -->
+      <section class="motion-frame" data-motion="soft" aria-labelledby="heading-soft">
+        <header class="frame-bar">
+          <div class="frame-meta">
+            <span class="frame-index">02</span>
+            <h2 id="heading-soft" class="frame-title">Soft</h2>
+          </div>
+          <p class="frame-summary">A soft landing. A little wobble.</p>
+        </header>
+        <div class="stage arena" data-world id="stage-soft" data-index="1">
+          <div class="floor-baseline" aria-hidden="true">
+            <div class="floor-ticks"></div>
+          </div>
+          <div class="cast-shadow shadow" id="shadow-soft" aria-hidden="true"></div>
+          <button type="button"
+            id="flower-soft"
+            class="flower-unit flower"
+            aria-label="Grab Soft flower" aria-describedby="keyboard-help"
+          >
+            <img class="flower-graphic" src="./assets/flower.svg" width="194" height="198" alt="" draggable="false">
+          </button>
+        </div>
+      </section>
+
+      <!-- Frame 3: Heavy -->
+      <section class="motion-frame" data-motion="heavy" aria-labelledby="heading-heavy">
+        <header class="frame-bar">
+          <div class="frame-meta">
+            <span class="frame-index">03</span>
+            <h2 id="heading-heavy" class="frame-title">Heavy</h2>
+          </div>
+          <p class="frame-summary">Low bounce. A heavier roll.</p>
+        </header>
+        <div class="stage arena" data-world id="stage-heavy" data-index="2">
+          <div class="floor-baseline" aria-hidden="true">
+            <div class="floor-ticks"></div>
+          </div>
+          <div class="cast-shadow shadow" id="shadow-heavy" aria-hidden="true"></div>
+          <button type="button"
+            id="flower-heavy"
+            class="flower-unit flower"
+            aria-label="Grab Heavy flower" aria-describedby="keyboard-help"
+          >
+            <img class="flower-graphic" src="./assets/flower.svg" width="194" height="198" alt="" draggable="false">
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span id="keyboard-help" class="footer-note">Arrow keys to lift and move · Space to drop</span>
+      <span class="footer-state" id="motion-status" role="status" aria-live="polite">Playing</span>
+    </footer>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
